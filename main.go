@@ -14,13 +14,13 @@ a value that satisfies error.
 
 var (
 	errorEmptyString = errors.New("Unwilling to print an empty string #2")
-)  // error package
+) // error package
 
 func myprinter(msg string) error {
 	if msg == "" {
-		//return fmt.Errorf("Unwilling to print an empty string")
+		return fmt.Errorf("Unwilling to print an empty string")
 		//return errorEmptyString
-		panic(errorEmptyString)   // not for general usage
+		//panic(errorEmptyString)   // not for general usage
 	}
 
 	_, err := fmt.Printf("%s\n", msg)
@@ -29,7 +29,7 @@ func myprinter(msg string) error {
 
 func main() {
 	if err := myprinter("The Nuts!"); err != nil {
-		fmt.Printf("Printer FUnction Failed :%s\n", err)
+		fmt.Printf("Printer Function Failed :%s\n", err)
 		os.Exit(1)
 	}
 	if err := myprinter(""); err != nil {
@@ -38,7 +38,6 @@ func main() {
 		} else {
 			fmt.Printf("Printer Function Failed :%s\n", err)
 		}
-			os.Exit(1)
+		os.Exit(1)
 	}
 }
-
